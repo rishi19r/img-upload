@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Upload</title>
+</head>
+<body>
+  <h1>Upload Images to Cloudinary</h1>
+  <form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="images" multiple required />
+    <button type="submit">Upload</button>
+  </form>
+
+<h2>Uploaded Images</h2>
+<div>
+  <% if (images && images.length > 0) { %>
+    <% images.forEach(image => { %>
+      <div style="margin: 10px; display: inline-block;">
+        <img src="<%= image.url %>" alt="Image" style="width: 150px; height: auto;" />
+        <p><%= image.filename %></p>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>No images uploaded yet.</p>
+  <% } %>
+</div>
+
+</body>
+</html>
